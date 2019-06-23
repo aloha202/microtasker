@@ -1,0 +1,150 @@
+html{
+    
+}
+
+body {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    background: url(../images/default.jpg) 50% top no-repeat;
+    background-attachment: fixed;    
+}
+
+.container-narrow {
+    margin: 0 auto;
+    max-width: 900px;
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+.jumbotron {
+    margin: 60px 0;
+    text-align: center;
+}
+.jumbotron h1 {
+    font-size: 72px;
+    line-height: 1;
+}
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.marketing {
+    margin: 60px 0;
+}
+.marketing p + h4 {
+    margin-top: 28px;
+}
+.form-actions .btn{
+    float: left;
+}
+.form-horizontal{
+}
+.form-horizontal fieldset{
+}
+
+.form-horizontal .btn{
+    margin-right: 10px;
+}
+
+img.captcha{
+    position: relative;
+    left: 15px;
+}
+
+.text{
+    margin-bottom: 25px;
+}
+
+.control-group .help{
+    font-size: 11px;
+    line-height: 100%;
+    display: block;
+    padding: 5px 0 0 180px;
+}
+
+.form-error{
+    font-size: 11px;
+    color: red;
+}
+.form-horizontal .control-label{
+    position: relative;
+    padding-top: 0;
+}
+
+.form-horizontal label.checkbox-label{
+    display: inline !important;
+    float: none;
+    margin-left: 3px;
+}
+.form-horizontal input[type='checkbox']{
+    margin-top: -2px;
+}
+.form-horizontal .control-group.errors{
+    margin-top: -10px;
+}
+.form-horizontal input.captcha{
+    width: 20%;
+}
+.form-horizontal .control-group .control-label strong{
+    color: red;
+}
+input.hasDatepicker{
+    background-image: url(../images/calendar_icon.png);
+    background-position: 99% 50%;
+    background-repeat: no-repeat;
+}
+
+form .errors .form-error{
+    display: none;
+}
+form .errors :first-child.form-error{
+    display: block;
+}
+
+.menu .active{
+    font-weight: bold;
+}
+
+h2.basic{
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: normal;
+  line-height: 40px;
+  color: #333333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.page_well{
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.profile_menu{
+    text-align: right;
+    position: relative;
+    top: -37px;
+    margin-top: -15px;
+}
+
+.footer{
+    font-size: 11px;
+}
+.languages{
+    white-space: nowrap;
+}
+.languages a.active{
+    border: solid 1px #ccc;
+}
+
+.profile_menu span{
+    color: #ccc ;
+}
+.profile_menu span:last-child{
+    display: none;
+}

@@ -1,0 +1,34 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           Config
+    theme:                 my_admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          config
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields: ~
+      list:
+        title: Settings
+        display: [_title, value]
+        object_actions:
+          _edit: ~
+        batch_actions: {}
+        actions: {}
+        table_method: tmListUser
+      filter:
+        class: false
+      form:
+        display: [title, value]
+        actions:
+          _save: ~
+          _list: ~
+      edit:
+        title: '%%title%%'
+      new:     ~

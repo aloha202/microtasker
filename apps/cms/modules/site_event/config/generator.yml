@@ -1,0 +1,40 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           SiteEvent
+    theme:                 my_admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          site_event
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        type: {renderer: ____}
+        admin_email: {renderer: 'sfOutputEscaper::unescape'}
+        user_email: {renderer: 'sfOutputEscaper::unescape'}        
+      list: 
+        actions: {}
+        batch_actions: {}
+        object_actions:
+          _delete: 
+        sort: [created_at, desc]
+        title: Notifications
+        table_method: tmList
+        display: [type, admin_email, user_email]
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:     ~
+      
+#    extra:
+#      javascript:
+#        showhide_form_fields:
+#          selloff:
+#            toggler: selloff_enabled
+#            fields: [selloff_price, selloff_end_date]

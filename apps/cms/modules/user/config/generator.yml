@@ -1,0 +1,44 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           sfGuardUser
+    theme:                 my_admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          sf_guard_user
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      fields:
+        password_again: { label: "Password (again)" }
+
+      list:
+        title:   User list
+        display: [=username, created_at, updated_at, last_login]
+        batch_actions: {}
+
+      form:
+        class: sfGuardUserAdminForm
+        display:
+          "User":                   [first_name, last_name, email_address, username, password, password_again]
+          "Permissions": [is_active, is_super_admin, permissions_list]
+
+      filter:
+        display: [username]
+      edit:
+        title: Editing User "%%username%%"
+
+      new:
+        title: New User
+      
+    extra:
+      javascript:
+        ajax_form_validation:
+          fields: [email_address]
+#        showhide_form_fields:
+#          selloff:
+#            toggler: selloff_enabled
+#            fields: [selloff_price, selloff_end_date]

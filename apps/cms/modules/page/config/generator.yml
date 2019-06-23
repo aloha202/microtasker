@@ -1,0 +1,31 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           Page
+    theme:                 my_admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          page
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        is_redirect: {label: Включить редирект}
+        slug: {label: УРЛ-метка}
+      list:
+        display: [name, slug]
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:     ~
+    extra:
+      javascript:
+        showhide_form_fields:
+          redirect:
+            toggler: is_redirect
+            fields: [redirect_route, redirect_timeout]      

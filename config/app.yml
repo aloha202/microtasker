@@ -1,0 +1,145 @@
+---
+all:
+  langs:
+    all:
+      en: English
+      ru: Русский
+      es: Spanish
+      de: Deutsch
+      it: Italian
+      fr: French
+      pt: Portugese
+      sv: Swedish
+      fi: Finnish
+      no: Norwegian
+      nl: Dutch
+      pl: Polish
+    cultures:
+      en: en_EN
+      ru: ru_RU
+      es: es_ES
+      de: de_DE
+      it: it_IT
+      fr: fr_FR
+      pt: pt_PT
+      sv: sv_SW
+      fi: fi_FI
+      no: no_NO
+      nl: nl_NL
+      pl: pl_PL
+  csv_delimiter: ;
+  email:
+    noreply: 'Куча кода <noreply@dev.web375.org>'
+    template_footer: "<br /><br /> <a href='http://demo.web375.org'>demo.web375.org</a>"
+  form:
+    attribute_required: false
+    siteurl: http://dev
+  site_events:
+    password_recovery:
+      name: Восстановление пароля
+      email_user:
+        template: password_recovery_user
+    registration:
+      email_admin:
+        template: registration_admin
+      email_user:
+        template: registration_user
+      name: Registration
+    user_created_by_admin:
+      email_user:
+        template: user_created_by_admin_user
+      name: User created by admin
+    contactus_message:
+      email_user:
+        template: contactus_message_user
+      email_admin:
+        template: contactus_message_admin
+      name: Contactus message
+    user_create:
+      email_user:
+        template: user_create_user
+      name: User create
+    social_bridge_user_confirm_email:
+      email_user:
+        template: social_bridge_user_confirm_email_user
+      name: Social bridge user confirm email
+    microtask_create:
+      email_admin:
+        subject: Создан микротаск
+        message: >
+          {%User%} создал микротаск {%description%}<br />
+          {%footer%}
+        
+  live_server: ' '
+  news:
+    callback: util/imageBuilderWidget
+    image_folder: news
+    image_ext: jpg
+    image_field: image
+    pdf_folder: pdf
+    pdf_field: pdf
+    thumbs:
+      small:
+        width: 160
+        height: 120
+        method: crop
+        ext: .small
+      tiny:
+        width: 127
+        height: 106
+        method: crop
+        ext: .tiny
+  blog_post:
+    callback: util/imageBuilderWidget
+    image_folder: news
+    image_ext: jpg
+    image_field: image
+    pdf_folder: pdf
+    pdf_field: pdf
+    thumbs:
+      small:
+        width: 150
+        height: 150
+        method: crop
+        ext: .small
+  default_image:
+    callback: util/imageBuilderWidget
+    image_folder: default_image
+    image_ext: jpg
+    image_field: image
+    pdf_folder: pdf
+    pdf_field: pdf
+    thumbs:
+      small_news:
+        width: 157
+        height: 163
+        method: crop
+        ext: .small
+      small:
+        width: 157
+        height: 163
+        method: crop
+        ext: .small
+      tiny:
+        width: 40
+        height: 40
+        method: crop
+        ext: .tiny
+  profile:
+    callback: util/imageBuilderWidget
+    image_folder: profile
+    image_ext: jpg
+    image_field: image
+    pdf_folder: pdf
+    pdf_field: pdf
+    thumbs:
+      small:
+        width: 160
+        height: 160
+        method: crop
+        ext: .small
+      tiny:
+        width: 80
+        height: 80
+        method: crop
+        ext: .tiny

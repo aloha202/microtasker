@@ -1,0 +1,1 @@
+<?php include_config('registration_complete_message'); ?>

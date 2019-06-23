@@ -1,0 +1,10 @@
+/.idea
+.idea
+
+/cache
+cache
+log
+/log
+config/databases.yml
+config/symfony.php
+web/uploads

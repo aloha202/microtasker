@@ -1,0 +1,35 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           SiteVisit
+    theme:                 my_admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          site_visit
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Посещения
+        display: [ip_address, user_agent, created_at]
+        object_actions: {}
+        actions: {}
+        batch_actions: {}
+        sort: [created_at, desc]
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:     ~
+      
+#    extra:
+#      javascript:
+#        showhide_form_fields:
+#          selloff:
+#            toggler: selloff_enabled
+#            fields: [selloff_price, selloff_end_date]

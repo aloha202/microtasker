@@ -1,0 +1,46 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           SiteMessage
+    theme:                 my_admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          site_message
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        name: {label: Имя}
+       # phone_number: {label: Номер телефона}
+      list:
+        display: [name, email, message, created_at]
+        actions: 
+          export: {label: Export, action: export}
+        batch_actions: {}
+        object_actions: 
+          _delete: ~
+#          _show: {action: show, label: Просмотр}
+#          createUser: {action: createUser, label: 'Создать пользователя'}
+        sort: [created_at, desc]
+        title: Сообщения
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:     ~
+    extra:
+      export:
+        filename: 'Cообщения с сайта'
+        dateformat: 'd.m.Y'
+        mode: 'xslx'
+        display: [created_at, name, email, message]
+#    extra:
+#      javascript:
+#        showhide_form_fields:
+#          selloff:
+#            toggler: selloff_enabled
+#            fields: [selloff_price, selloff_end_date]

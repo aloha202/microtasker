@@ -1,0 +1,406 @@
+CmsModule:
+  connection: doctrine
+  columns:
+    name: {type: string(255), notnull: true, unique: true}
+    is_active: {type: boolean, default: true}
+    model: string(255)
+    model_sitemap_callback: string(255)
+    show_route: string(255)
+    
+CmsLanguage:
+  connection: doctrine  
+  columns:
+    name: {type: string(5), notnull: true, unique: true}
+    is_active: {type: boolean, default: true}
+    
+CmsRuntimeError:
+  connection: doctrine  
+  actAs: [Timestampable]
+  columns:
+    description: string()
+    url: string()
+
+Config:
+  connection: doctrine  
+  columns:
+    name: {type: string(255), notnull: true}
+    title: string(255)
+    value: string()
+    help: string()
+    display: {type: enum, values: [user, system]}
+    section: {type: enum, values: [settings, dictionary, system, wiki], default: settings}
+    type: {type: enum, values: [integer, float, boolean, text, enum], default: text}
+    type_enum_values: string()
+    use_wysiwyg: {type: boolean, default: false}
+    is_localized: {type: boolean, default: false}
+
+MenuItem:
+  connection: multilang
+  actAs:
+    NestedSet:
+      hasManyRoots:   true
+      rootColumnName: root_id
+  columns:
+    name: {type: string(255), notnull: true}
+    root_name: string(255)
+    type: {type: enum, values: [empty, page, module, route, external], default: empty}
+    page_id: integer
+    cms_module_id: integer
+    route: string(255)
+    external: string()
+    is_empty: {type: boolean, default: true}
+    is_auth: {type: boolean, default: false}
+    icon_class: string(32)
+  relations:
+    Page: {foreignAlias: MenuItems, onDelete: SET NULL}
+    
+Page:
+  connection: multilang  
+  actAs:
+    Sluggable:
+      unique: true
+      fields: [name]
+      canUpdate: true
+      builder: 'ProjectHelper::slug_builder'      
+    Meta: ~
+    Redirect301:
+      field: slug
+      route: page_show
+  columns:
+    name: {type: string(255), notnull: true}
+    content: string()
+    is_module_page: {type: boolean, default: false}
+    module_name: string(255)
+    is_content_editable: {type: boolean, default: true}
+    special_mark: string(255)
+    is_redirect: {type: boolean, default: false}
+    redirect_route: {type: string(32), default: '/'}
+    redirect_timeout: {type: integer(2), default: 5}
+    layout: string(32)    
+
+News:
+  connection: doctrine  
+  actAs:
+    ImageBuilder: {}
+    Sluggable:
+      unique: true
+      fields: [title]
+      canUpdate: true
+      builder: 'ProjectHelper::slug_builder'
+    Meta:
+      title_field: title
+  columns:
+    date: {type: date, notnull: true}
+    title: {type: string(255), notnull: true}
+    brief: string()
+    content: string()
+    image: string(255)
+    
+Profile:
+  connection: doctrine  
+  actAs:
+    ImageBuilder: ~
+    Timestampable: ~
+    Geo:
+      engine: google
+  columns:
+    user_id: {type: integer, notnull: true}
+    first_name: string(255)
+    last_name: string(255)
+    image: string(255)
+    dob: date
+    email: string(255)
+    phone: string(255)
+    about: string()
+  relations:
+    User: {class: sfGuardUser, local: user_id, type: one, foreignType: one, onDelete: CASCADE}  
+
+UserSettings:
+  connection: doctrine
+  columns:
+    user_id: {type: integer, notnull: true}
+    is_fillet_locked: {type: boolean, default: false}
+    is_fillet_lock_message_shown: {type: boolean, default: false}
+  relations:
+    User: {class: sfGuardUser, local: user_id, type: one, foreignType: one, foreignAlias: Settings, onDelete: CASCADE}
+    
+SiteMessage:
+  connection: doctrine  
+  actAs:
+    Timestampable: ~
+    Attach:
+      mime_types: '*'
+    BackendViewed: ~
+  columns:
+    type: {type: enum, values: [contact, wishlist]}
+    name: {type: string(255), notnull: true}
+    phone_number: string(255)
+    email: string(255)
+    company_name: string(255)
+    message: string()
+    
+EmailTemplate:
+  connection: multilang  
+  columns:
+    name: {type: string(255), notnull: true}
+    subject: {type: string(255), notnull: true}
+    message: string()
+    
+SiteEvent:
+  connection: doctrine  
+  actAs: [Timestampable, BackendViewed]
+  columns:
+    type: {type: string(255)}
+    description: string()
+    admin_email: string()
+    user_email: string()
+    
+AppError:
+  connection: doctrine  
+  actAs: [Timestampable]
+  columns:
+    description: string()    
+    
+SiteVisit:
+  connection: doctrine  
+  actAs: [Timestampable]
+  columns:
+    ip_address: string(32)
+    country: string(32)
+    user_agent: string(255)
+    user_id: integer
+  relations:
+    User: {class: sfGuardUser, local: user_id, foreignAlias: SiteVisits, onDelete: SET NULL}    
+    
+SiteVisitPage:
+  connection: doctrine  
+  actAs: [Timestampable]
+  columns:
+    site_visit_id: {type: integer, notnull: true}
+    url: string(255)
+  relations:
+    SiteVisit: {foreignAlias: VisitPages, onDelete: CASCADE}
+    
+ForgotPassword:
+  connection: doctrine  
+  actAs: [Timestampable]
+  columns:
+    user_id: {type: integer, notnull: true}
+    email: {type: string(255), notnull: true}
+    hash: {type: string(255), notnull: true}
+  relations:
+    User: {class: sfGuardUser, local: user_id, onDelete: CASCADE, foreignAlias: ForgotPasswords}  
+    
+    
+DefaultImage:
+  connection: doctrine  
+  actAs: [ImageBuilder]
+  columns:
+    name: string(255)
+    title: string(255)
+    image: {type: string(255), notnull: true} 
+    
+BlogPost:
+  connection: doctrine  
+  actAs:
+    Timestampable: ~
+    ImageBuilder: ~
+    Meta: ~
+    Sluggable:
+      unique: true
+      fields: [name]
+      canUpdate: true
+      builder: 'ProjectHelper::slug_builder'
+    Redirect301: ~
+  columns:
+    name: {type: string(255), notnull: true}
+    date: {type: date, notnull: true}
+    image: string(255)
+    brief: string()
+    extra: string()
+    text: clob
+    is_published: {type: boolean, default: false}
+  relations:
+    Tags: {class: BlogTag, refClass: BlogPost2BlogTag, foreignAlias: BlogPosts}
+    
+BlogPostComment:
+  connection: doctrine  
+  actAs: [Timestampable]
+  columns:
+    blog_post_id: {type: integer, notnull: true}
+    username: {type: string(255), notnull: true}
+    comment: {type: string()}
+    is_published: {type: boolean, default: false}
+  relations:
+    BlogPost: {onDelete: CASCADE, foreignAlias: Comments}
+    
+BlogTag:
+  connection: doctrine  
+  columns:
+    name: {type: string(255), notnull: true, unique: true}
+
+BlogPost2BlogTag:
+  connection: doctrine  
+  columns:
+    blog_post_id: {type: integer, primary: true, notnull: true}
+    blog_tag_id: {type: integer, primary: true, notnull: true}    
+  relations:
+    BlogPost: {onDelete: CASCADE}
+    BlogTag: {onDelete: CASCADE}
+    
+Redirect301:
+  connection: doctrine  
+  actAs: [Timestampable]
+  columns:
+    url_from: {type: string(255), notnull: true, unique: true}
+    url_to: {type: string(255), notnull: true}
+    is_active: {type: boolean, default: true}
+    comment: string()  
+    use_count: {type: integer, default: 0}
+    
+    
+EmailError:
+  connection: doctrine  
+  actAs: [Timestampable]
+  columns:
+    email_from: string(255)
+    email_to: string(255)
+    subject: string(255)
+    body: string()
+    cc: string(255)
+    file: string(255)
+    errmes: string()    
+    
+Wiki:
+  connection: doctrine  
+  columns:
+    name: {type: string(255), notnull: true}
+    content: string()
+    sort_order: integer
+    is_published: {type: boolean, default: false}
+    
+BannedIp:
+  connection: doctrine  
+  actAs: [Timestampable]
+  columns:
+    ip: {type: string(15), notnull: true}
+    reason: string(255)
+    
+TextBlock:
+  connection: multilang  
+  columns:
+    name: {type: string(255), notnull: true}
+    title: {type: string(255)}
+    text: string()
+    application: string(32)
+    module: string(32)
+  indexes:
+    section_index:
+      fields: [application, module]
+      
+Localization:
+  connection: doctrine  
+  columns:
+    model: {type: string(64), notnull: true}
+    pk: {type: integer, notnull: true}
+    field: {type: string(64), notnull: true}
+    ru: string()
+    en: string()
+    de: string()
+    es: string()
+    it: string()
+    fr: string()
+    pt: string()    
+    sv: string()    
+    fi: string()    
+    no: string()        
+    nl: string()        
+    pl: string()    
+  indexes:
+    main: 
+      fields: [model, pk, field]
+  
+  
+SocialUser:
+  connection: doctrine  
+  columns:
+    facebook_user_id: decimal(21,0)
+    facebook_user_info: string()
+    vkontakte_user_id: decimal(21,0)
+    vkontakte_user_info: string()    
+    google_user_id: decimal(21,0)   
+    google_user_info: string()
+    mailru_user_id: decimal(21,0)
+    mailru_user_info: string()
+    yandex_user_id: decimal(21,0)
+    yandex_user_info: string()
+    twitter_user_id: decimal(21,0)  
+    twitter_user_info: string()
+    user_id: integer
+    email: string(255)
+  relations:
+    User: {local: user_id, class: sfGuardUser, type: one, foreignType: one, onDelete: CASCADE} 
+    
+SocialBridge:
+  connection: doctrine  
+  actAs:
+    Timestampable: ~
+  columns:
+    user_id: {type: integer, notnull: true}
+    email: {type: string(64), notnull: true}
+    status: {type: enum, values: [new, processing, closed], default: new}
+    token: string(255)
+    network: {type: enum, values: [facebook, vkontakte, mailru, google, yandex, twitter]}
+    network_user_id: integer
+  relations:
+    User: {class: sfGuardUser, local: user_id, foreignAlias: SocialBridges, onDelete: CASCADE}   
+    
+    
+Microtask:
+  actAs:
+    User: ~
+    Timestampable: ~
+    Event:
+      create: microtask_create
+  columns:
+    thread_id: integer
+    description: {type: string(), notnull: true}
+    status: {type: enum, values: [new, success, fail], default: new}
+    priority: {type: integer, unsigned: true, default: 1}
+    is_blocker: {type: boolean, default: false}
+    is_reported: {type: boolean, default: false}
+  relations:
+    Thread: {foreignAlias: Microtasks, onDelete: SET NULL}
+    
+Thread:
+  actAs:
+    User: ~
+  columns:
+    name: {type: string(255), notnull: true}
+
+MicrotaskPreset:
+  actAs: [User]
+  columns:
+    description: {type: string(), notnull: true}
+    type: {type: enum, values: [down, up, blocker], default: down}
+    
+Backlog:
+  actAs: [User, Timestampable]
+  columns:
+    description: {type: string(255), notnull: true}
+    
+Todo:
+  connection: doctrine
+  actAs: [Timestampable]
+  columns:
+    name: {type: string(), notnull: true}
+    status: {type: enum, values: [open, closed], default: open}
+    
+Report:
+  actAs: [Timestampable]
+  columns:
+    user_id: {type: integer, notnull: true}
+    microtask_count: {type: integer, unsigned: true}
+    info: string()
+  relations:
+    User: {class: sfGuardUser, local: user_id, foreignAlias: Reports, onDelete: CASCADE}

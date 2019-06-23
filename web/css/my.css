@@ -1,0 +1,40 @@
+/* 
+    Document   : my
+    Created on : 02.05.2015, 9:52:40
+    Author     : Alaxa
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.form-error{
+	color: red;
+	font-weight: bold;
+}
+
+.register-link{
+	text-align: center;
+	font-size: 33px;
+	padding: 50px 40px 30px;
+}
+.register-link a{
+	white-space: nowrap;
+	position: relative;
+}
+.register-link a.about{
+	left: -25px;
+	top: -10px;
+}
+.register-link a.feedback{
+	top: -15px;
+	left: 25px;
+}
+.register-link a.grey{
+	font-size: 25px;
+	color: grey;
+}
+.register-link a.grey:hover{
+	color: #aaa;
+}
+.register-link a.grey.small{
+	font-size: 17px;
+}

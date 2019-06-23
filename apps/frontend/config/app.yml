@@ -1,0 +1,16 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/11-App
+
+# default values
+all:
+  visit:
+    process_page: true
+  sf_captchagd:
+    image_width: 200
+    image_height: 60
+    font_size: 33
+    background_color: eeeeee
+  auth:
+    registration_signin: true
+    activation_required: false
+    insecure_modules: [sfCaptchaGD, page, contactus, default]

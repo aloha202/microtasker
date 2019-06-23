@@ -1,0 +1,46 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           BlogTag
+    theme:                 my_admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          blog_tag
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Tags
+        display: [name]
+      filter:
+        display: [name]
+      form:    ~
+      edit:    ~
+      new:     ~
+      
+#    extra:
+#      export:
+#        filename: '%date% - My export'
+#        mode: 'csv'      #[csv, xlsx]
+#        dateformat: 'Y.m.d'
+#        encoding: 'windows-1251'
+#      javascript:
+#        remoteoptions:
+#          purchase:
+#            trigger: purchase_id
+#            url: util/purchasePriceByPurchase
+#            update: purchase_price_id
+#        remotedata:
+#          customer:
+#            trigger: customer_id
+#            url: util/remoteCustomerData
+#            fields: [customer_name, customer_address]  
+#        showhide_form_fields:
+#          selloff:
+#            toggler: selloff_enabled
+#            fields: [selloff_price, selloff_end_date]

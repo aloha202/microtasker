@@ -1,0 +1,39 @@
+generator:
+  class: myDoctrineGenerator
+  param:
+    model_class:           EmailTemplate
+    theme:                 my_admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          email_template
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display: [subject, message]
+        object_actions:
+          _edit: ~
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:     ~
+      
+#    extra:
+#      export:
+#        filename: '%date% - My export'
+#        mode: 'csv'      #[csv, xlsx]
+#        dateformat: 'Y.m.d'
+#        encoding: 'windows-1251'
+#      javascript:
+#        showhide_form_fields:
+#          selloff:
+#            toggler: selloff_enabled
+#            fields: [selloff_price, selloff_end_date]

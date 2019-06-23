@@ -1,0 +1,37 @@
+---
+all:
+  sf_admin_dash:
+    site: Microtasker
+    categories:
+      Pages:
+        items:
+          Pages:
+            url: page
+      Пользователи:
+        items:
+          Пользователи:
+            url: user/index
+      Микротаски:
+        items:
+          Микротаски:
+            url: microtask/index            
+          Ленты:
+            url: fillet/index                        
+          Пресеты:
+            url: microtask_preset/index                                    
+      Настройки:
+        items:
+          Настройки:
+            url: settings/index
+          Email шаблоны:
+            url: email_template/index
+          Редирект 301:
+            url: redirect301/index
+      Notifications:
+        items:
+          Notifications:
+            url: site_event
+            new_messages: SiteEvent
+          Сообщения:
+            url: site_message
+            new_messages: SiteMessage

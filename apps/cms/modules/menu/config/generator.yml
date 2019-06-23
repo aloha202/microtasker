@@ -1,0 +1,43 @@
+generator:
+  class: myDoctrineGeneratorParam
+  param:
+    model_class:           MenuItem
+    theme:                 admin_param
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          menu_item
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        table_method: tmList
+        display: [name]
+        object_actions:
+          _edit: ~
+          _delete: ~
+        batch_actions: {}
+        actions: {}
+      filter:
+        class: false
+      form: 
+        display:
+          #"Menu": [en, ru]
+          "Content": [name, type, page_id, cms_module_id, route, external, is_auth]
+          "Icon": [icon_class]
+      edit:    ~
+      new:     ~
+
+#    extra:
+#      javascript:
+#        showhide_form_fields:
+#          page:
+#            toggler: is_page
+#            fields: [page_id]
+#          module:
+#            toggler: is_module
+#            fields: [module]                    

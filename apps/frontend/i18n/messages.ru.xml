@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext" date="2011-11-22T23:53:47Z">
+    <header/>
+    <body>    
+      <trans-unit>
+        <source>Users</source>
+        <target>Пользователи</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Logout</source>
+        <target>Выход</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Dashboard</source>
+        <target>Панель управления</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Menu</source>
+        <target>Меню</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Hi,</source>
+        <target>Привет,</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Username</source>
+        <target>Логин</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Password</source>
+        <target>Пароль</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Login</source>
+        <target>Вход в систему</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Enter</source>
+        <target>Войти</target>
+      </trans-unit>
+      <trans-unit>
+        <source>All rights reserved</source>
+        <target>Все права защищены</target>
+      </trans-unit>      
+      <trans-unit>
+        <source>Pages</source>
+        <target>Текстовые страницы</target>
+      </trans-unit>      
+      <trans-unit>
+        <source>Plays</source>
+        <target>Репертуар</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Actors</source>
+        <target>Актеры</target>
+      </trans-unit>      
+      <trans-unit>
+        <source>News</source>
+        <target>Новости</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Language</source>
+        <target>Язык</target>
+      </trans-unit>       
+      <trans-unit>
+        <source>ok</source>
+        <target>ок</target>
+      </trans-unit>       
+    </body>
+  </file>
+</xliff>

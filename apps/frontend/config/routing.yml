@@ -1,0 +1,130 @@
+thread_user:
+  url: /thread/:id/user
+  param: {module: thread, action: listUser}
+  class: sfDoctrineRoute
+  options: {type: object, model: sfGuardUser}
+  requirements:
+    id: \d+
+    sf_method: get
+thread_delete:
+  url: /thread/:id/delete
+  param: {module: thread, action: delete}
+  class: sfDoctrineRoute
+  options: {type: object, model: Thread}
+  requirements:
+    id: \d+
+    sf_method: post
+thread_update:
+  url: /thread/:id/update
+  param: {module: thread, action: update}
+  class: sfDoctrineRoute
+  options: {type: object, model: Thread}
+  requirements:
+    id: \d+
+    sf_method: post
+thread_edit:
+  url: /thread/:id/edit
+  param: {module: thread, action: edit}
+  class: sfDoctrineRoute
+  options: {type: object, model: Thread}
+  requirements:
+    id: \d+
+    sf_method: get
+thread_show:
+  url: /thread/:id/show
+  param: {module: thread, action: show}
+  class: sfDoctrineRoute
+  options: {type: object, model: Thread}
+  requirements:
+    id: \d+
+    sf_method: get
+preset_user:
+  url: /preset/:id/user
+  param: {module: preset, action: listUser}
+  class: sfDoctrineRoute
+  options: {type: object, model: sfGuardUser}
+  requirements:
+    id: \d+
+    sf_method: get
+preset_delete:
+  url: /preset/:id/delete
+  param: {module: preset, action: delete}
+  class: sfDoctrineRoute
+  options: {type: object, model: MicrotaskPreset}
+  requirements:
+    id: \d+
+preset_update:
+  url: /preset/:id/update
+  param: {module: preset, action: update}
+  class: sfDoctrineRoute
+  options: {type: object, model: MicrotaskPreset}
+  requirements:
+    id: \d+
+    sf_method: post
+preset_edit:
+  url: /preset/:id/edit
+  param: {module: preset, action: edit}
+  class: sfDoctrineRoute
+  options: {type: object, model: MicrotaskPreset}
+  requirements:
+    id: \d+
+    sf_method: get
+preset_show:
+  url: /preset/:id/show
+  param: {module: preset, action: show}
+  class: sfDoctrineRoute
+  options: {type: object, model: MicrotaskPreset}
+  requirements:
+    id: \d+
+    sf_method: get
+users_show_map:
+  url: '/users/:id/map'
+  param: { module: users, action: showMap }
+  class: sfDoctrineRoute
+  options: { type: object, model: Profile }
+users_show:
+  url: '/users/:id/show'
+  param: { module: users, action: show }
+  class: sfDoctrineRoute
+  options: { type: object, model: Profile }
+oauth_bridge:
+  url: /oauth/bridge
+  param: { module: oauth, action: bridge }
+oauth_bridge_confirm:
+  url: /oauth/bridgeconfirm
+  param: { module: oauth, action: bridgeConfirm }
+oauth:
+  url: '/oauth/:type'
+  param: { module: oauth, action: oauth }
+blog_show:
+  url: '/blog/:id/show'
+  param: { module: blog, action: show }
+  class: sfDoctrineRoute
+  options: { type: object, model: BlogPost }
+ip_banned:
+  url: /your-ip-address-is-banned
+  param: { module: default, action: ipBanned }
+sitemap_xml:
+  url: /sitemap.xml
+  param: { module: sitemap, action: xml }
+change_language:
+  url: /change_language
+  param: { module: language, action: changeLanguage }
+news_show:
+  url: '/news/:date/:slug/:id.htm'
+  param: { module: news, action: show }
+  class: sfDoctrineRoute
+  options: { type: object, model: News }
+page_show:
+  url: '/page/:slug'
+  param: { module: page, action: show }
+  class: sfDoctrineRoute
+  options: { type: object, model: Page }
+homepage:
+  url: /
+  param: { module: index, action: index }
+default_index:
+  url: '/:module'
+  param: { action: index }
+default:
+  url: '/:module/:action/*'
